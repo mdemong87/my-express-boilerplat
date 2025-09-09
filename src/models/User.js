@@ -1,0 +1,39 @@
+const mongoose = require("mongoose");
+
+
+/*************** Define the schema Here ****************/
+const userSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true
+    },
+    password: {
+      type: String,
+      required: true
+    },
+    role: {
+      type: String,
+      enum: ["admin", "employee"],
+      default: "employee"
+    }
+  },
+  { timestamps: true } // adds createdAt & updatedAt automatically
+);
+
+
+
+/************** Create model from schema Here ****************/
+const User = mongoose.model("User", userSchema);
+
+
+
+/************** module export from  here **************/
+module.exports = User;
