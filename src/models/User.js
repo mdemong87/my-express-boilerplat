@@ -21,8 +21,8 @@ const userSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ["admin", "employee"],
-      default: "employee"
+      enum: ["admin", "user"],
+      default: "user"
     }
   },
   { timestamps: true } // adds createdAt & updatedAt automatically
@@ -31,7 +31,7 @@ const userSchema = new mongoose.Schema(
 
 
 /************** Create model from schema Here ****************/
-const User = mongoose.model("User", userSchema);
+const User = mongoose.models.User || mongoose.model("User", userSchema);
 
 
 

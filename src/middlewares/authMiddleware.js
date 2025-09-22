@@ -10,10 +10,12 @@ const protect = (req, res, next) => {
     return res.status(401).json({ message: "Not authorized, no token" });
   }
 
-  const token = authHeader.split(" ")[1];
+  const token = authHeader.trim().split(/\s+/)[1];
+
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    console.log(decoded);
     req.user = decoded; // store user info in req.user
     next();
   } catch (error) {
