@@ -6,8 +6,10 @@ const bcrypt = require("bcryptjs");
 
 /********************  User registration Controller here ***********************/
 exports.registerUser = async (req, res) => {
+
   try {
     const { name, email, password } = req.body;
+    
     const userExists = await User.findOne({ email });
 
     if (userExists) return res.status(400).json({ message: "User already exists" });
@@ -75,10 +77,14 @@ exports.loginUser = async (req, res) => {
 
 
 
+exports.getAllUsers = async (req, res) => {
+  const users = await User.find();
+  res.json(users);
+};
 
 
 
-exports.getUsers = async (req, res) => {
+exports.getUser = async (req, res) => {
   const users = await User.find();
   res.json(users);
 };
