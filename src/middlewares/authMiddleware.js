@@ -15,7 +15,6 @@ const protect = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    console.log(decoded);
     req.user = decoded; // store user info in req.user
     next();
   } catch (error) {

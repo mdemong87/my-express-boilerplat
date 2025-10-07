@@ -66,7 +66,7 @@ exports.loginUser = async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
-      token: generateToken(user._id, user.role),
+      token: generateToken(user._id, user.name, user.role),
     });
   } catch (err) {
     res.status(500).json({ message: "Server error", error: err.message });
@@ -74,17 +74,3 @@ exports.loginUser = async (req, res) => {
 };
 
 
-
-
-
-exports.getAllUsers = async (req, res) => {
-  const users = await User.find();
-  res.json(users);
-};
-
-
-
-exports.getUser = async (req, res) => {
-  const users = await User.find();
-  res.json(users);
-};

@@ -1,7 +1,12 @@
 const express = require("express");
 const cors = require("cors");
-const dataRoutes = require("./routes/dataRoutes");
-const authRoutes=require('./routes/authroute/userRoutes');
+const healthRoutes = require("./routes/health/healthRoute");
+const authRoutes = require('./routes/authroute/authUserRoutes');
+const userRoutes = require('./routes/userroute/userRoutes');
+const productRoutes = require('./routes/productroute/productRoute');
+const profileRoutes = require('./routes/profile/profileRoute');
+
+
 
 const app = express();
 
@@ -16,11 +21,27 @@ app.use(cors());
 app.use(express.json());
 
 
-/********** Routes Define Here *********/
+/********** auth Routes Define Here *********/
 app.use("/", authRoutes);
 
-/********** Routes Define Here *********/
-app.use("/", dataRoutes);
+
+/********** user Routes Define Here *********/
+app.use("/", userRoutes);
+
+
+
+/********** Product Routes Define Here *********/
+app.use("/", productRoutes);
+
+
+
+/********** Profile Routes Define Here *********/
+app.use("/", profileRoutes);
+
+
+
+/********** health check Routes Define Here *********/
+app.use("/", healthRoutes);
 
 
 /******* Export the module ******/
