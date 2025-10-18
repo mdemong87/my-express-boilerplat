@@ -1,27 +1,27 @@
-const User = require("../../models/User");
-const generateToken = require("../../utils/generateToken");
-const bcrypt = require("bcryptjs");
+import bcrypt from "bcryptjs";
+import User from "../../models/User.js";
+import generateToken from "../../utils/generateToken.js";
 
 
 
 /********************  User registration Controller here ***********************/
-exports.registerUser = async (req, res) => {
+const registerUser = async (req, res) => {
 
   try {
     const { name, email, password } = req.body;
-    
+
     const userExists = await User.findOne({ email });
 
     if (userExists) return res.status(400).json({ message: "User already exists" });
 
 
-// Hash the password
+    // Hash the password
     const salt = await bcrypt.genSalt(10); // 10 = number of salt rounds
     const hashedPassword = await bcrypt.hash(password, salt);
 
 
 
-   // Create user with hashed password
+    // Create user with hashed password
     const user = await User.create({
       name,
       email,
@@ -43,7 +43,7 @@ exports.registerUser = async (req, res) => {
 
 /******************** Login User Controller here ***********************/
 
-exports.loginUser = async (req, res) => {
+const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -73,4 +73,10 @@ exports.loginUser = async (req, res) => {
   }
 };
 
+
+
+
+export {
+  loginUser, registerUser
+};
 

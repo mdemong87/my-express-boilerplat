@@ -1,6 +1,4 @@
-const Profile = require("../../models/Product");
-const { validate } = require("../../models/User");
-const { default: ProfileSchama } = require("../../validationSchema/profileSchema");
+import ProfileSchama from "../../validationSchema/profileSchema.js";
 
 
 
@@ -319,10 +317,8 @@ const deleteProfileInfo = async (req, res) => {
 
 
 /*********** modules export from here ************/
-module.exports = {
-    getAllUserProfileInfo,
-    getSingleUserProfileInfo,
-    createProfileInfo,
-    updateProfileInfo,
-    deleteProfileInfo
-}
+export {
+    createProfileInfo, deleteProfileInfo, getAllUserProfileInfo,
+    getSingleUserProfileInfo, updateProfileInfo
+};
+

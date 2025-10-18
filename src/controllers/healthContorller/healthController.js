@@ -6,6 +6,6 @@ const health = (req, res) => {
 
 
 /*********** modules export from here ************/
-module.exports={
- health
-}
+export {
+  health
+};

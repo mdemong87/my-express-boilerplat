@@ -1,15 +1,16 @@
-const express = require("express");
+import express from "express";
+
+
 const router = express.Router();
 
 /********* Import Here Controller Files **********/
-const { protect, authorize } = require("../../middlewares/authMiddleware");
-const { notFound, errorHandler } = require("../../middlewares/errorMiddleware");
-const validateRequest = require("../../middlewares/validateMiddleware");
-const {health}=require('../../controllers/healthContorller/healthController');
+import { health } from '../../controllers/healthContorller/healthController.js';
+import { authorize, protect } from "../../middlewares/authMiddleware.js";
+import { errorHandler, notFound } from "../../middlewares/errorMiddleware.js";
 
 
 
-router.get("/health",health);
+router.get("/health", health);
 
 
 
@@ -29,4 +30,4 @@ router.use(errorHandler);
 
 
 
-module.exports = router;
+export default router;

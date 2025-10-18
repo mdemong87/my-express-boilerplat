@@ -1,4 +1,4 @@
-const jwt = require("jsonwebtoken");
+import jwt from "jsonwebtoken";
 
 
 
@@ -38,4 +38,5 @@ const authorize = (...roles) => {
 
 
 /*********** module export from here ************/
-module.exports = { protect, authorize };
+export { authorize, protect };
+

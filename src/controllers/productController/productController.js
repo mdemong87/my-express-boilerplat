@@ -1,6 +1,5 @@
-const Product = require("../../models/Product");
-const { validate } = require("../../models/User");
-const { default: productSchema } = require("../../validationSchema/productSchema");
+import Product from "../../models/Product.js";
+import productSchema from "../../validationSchema/productSchema.js";
 
 
 
@@ -318,10 +317,7 @@ const deleteProduct = async (req, res) => {
 
 
 /*********** modules export from here ************/
-module.exports = {
-  getAllProduct,
-  getSingleProduct,
-  createProduct,
-  updateProduct,
-  deleteProduct
-}
+export {
+  createProduct, deleteProduct, getAllProduct,
+  getSingleProduct, updateProduct
+};

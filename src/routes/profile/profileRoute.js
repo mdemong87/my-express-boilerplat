@@ -1,6 +1,6 @@
-const express = require("express");
-const { getAllUserProfileInfo, getSingleUserProfileInfo, createProfileInfo, updateProfileInfo, deleteProfileInfo } = require('../../controllers/profile/profileController');
-const { protect, authorize } = require("../../middlewares/authMiddleware");
+import express from "express";
+import { createProfileInfo, deleteProfileInfo, getAllUserProfileInfo, getSingleUserProfileInfo, updateProfileInfo } from '../../controllers/profile/profileController.js';
+import { protect } from "../../middlewares/authMiddleware.js";
 
 
 const router = express.Router();
@@ -19,4 +19,4 @@ router.delete("/deleteProduct/:id", protect, deleteProfileInfo);
 
 
 
-module.exports = router;
+export default router;
